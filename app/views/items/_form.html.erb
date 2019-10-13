@@ -1,0 +1,13 @@
+<%= form_for @item do |f| %>
+	<p>
+		<%= f.label "Title" %>
+		<%= f.text_field(:title, {:class => "form-control"}) %>
+	</p>
+	<p>
+		<%= f.label "Description" %>
+		<%= f.text_area(:description, {:class => "form-control"}) %>
+	</p>
+	<p>
+		<%= f.submit({:class => "btn btn-default"})%>
+	</p>
+<% end %>
