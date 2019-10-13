@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails checklist follow along tutorial. 
 
-Things you may want to cover:
+Tutorial can be found here https://www.youtube.com/watch?v=Z9GaNNztcZk
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
