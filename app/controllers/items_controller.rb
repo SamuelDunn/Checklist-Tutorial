@@ -46,6 +46,12 @@ class ItemsController < ApplicationController
 		redirect_to root_path
 	end
 
+	def complete
+		@item = Item.find(params[:id])
+		@item.update_attribute(:completed_at, Time.now) # completed_at will be nil until updated here 
+		redirect_to root_path
+	end
+
 	def item_params
 		# find out what this does..
 		params.require(:item).permit(:title, :description)
