@@ -1,9 +1,13 @@
-<% @items.each do |item| %> 
-	<h2><%= link_to item.title, item_path(item) %></h2> <!--  instead of item_path(item) we could just do item as a short cut. Also note we don't use @item since item is the current element in the list 
-	we're accessing in the for loop -->
-	<p><%= item.description %></p>
-<% end %>
+<% if user_signed_in? %>
+	<% @items.each do |item| %> 
+		<h2><%= link_to item.title, item_path(item) %></h2> <!--  instead of item_path(item) we could just do item as a short cut. Also note we don't use @item since item is the current element in the list 
+		we're accessing in the for loop -->
+		<p><%= item.description %></p>
+	<% end %>
 
-<div class="container">
-	<%= link_to "New Item", new_item_path %>
-</div>
+	<div class="container">
+		<%= link_to "New Item", new_item_path %>
+	</div>
+<% else %>
+	<%= render "layouts/static_landing_page" %>
+<% end %>

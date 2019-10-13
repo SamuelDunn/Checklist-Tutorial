@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
 
 	def index 
-		@items = Item.all.order("created_at DESC")
+		if user_signed_in?
+			@items = Item.where(:user_id => current_user.id).order("created_at DESC")
+		end
 	end
 
-	def new 
-		# We create a new item that has nothing stored in it at first so the form 
-		# can grab onto that item and then manipulate it.  
-		@item = Item.new
+	def new  
+		@item = current_user.items.build
 	end
 
 	def show
@@ -15,16 +15,15 @@ class ItemsController < ApplicationController
 	end
 
 	def create 
-		@item = Item.new(item_params)
-	# 	private def post_params
-	# 	params.require(:post).permit(:title, :body)
-	# end
+		@item = current_user.items.build(item_params)
+
 		if @item.save
 			# An item only gets an id once its been saved to the database. Before that 
-			# if we try to access an id member of item it doesn't exist. 
+			# if we t ry to access an id member of item it doesn't exist. 
 			redirect_to root_path # Redirects the the /post/show route. 
 		else 
 			render "new"
+			puts "didn't save"
 		end
 	end
 
